@@ -1,0 +1,17 @@
+--- libc/locale/loadlocale.c.orig	2018-03-30 20:49:50.453959803 +0200
++++ libc/locale/loadlocale.c	2018-03-30 21:06:26.717720763 +0200
+@@ -121,9 +121,10 @@
+       switch (category)
+ 	{
+ #define CATTEST(cat) \
+-	case LC_##cat:							      \
+-	  assert (cnt < (sizeof (_nl_value_type_LC_##cat)		      \
+-			 / sizeof (_nl_value_type_LC_##cat[0])));	      \
++	case LC_##cat:						\
++	  if (cnt >= (sizeof (_nl_value_type_LC_##cat)          \
++	              / sizeof (_nl_value_type_LC_##cat[0])))   \
++	    goto puntdata;                                      \
+ 	  break
+ 	  CATTEST (NUMERIC);
+ 	  CATTEST (TIME);
+

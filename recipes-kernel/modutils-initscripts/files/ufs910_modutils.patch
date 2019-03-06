@@ -1,0 +1,26 @@
+--- a/modutils.sh.old	2019-01-28 14:59:23.053495000 +0300
++++ b/modutils.sh	2019-01-29 21:06:07.482808546 +0300
+@@ -36,6 +36,9 @@
+ 		[ "$VERBOSE" != no ] && echo -n "$module "
+ 		eval "$LOAD_MODULE $module $args >/dev/null 2>&1"
+ 		loaded_modules="${loaded_modules}${module} "
++		[ "$module" == "vfd" ] && echo "LOAD" > /dev/vfd
++		[ "$module" == "boxtype" ] && echo "load fp_control" > /usr/bin/fp_control -c # Used by fp_control! otherwise crash
++		[ "$module" == "zram" ] && echo "16777216" > /sys/block/zram0/disksize # Use 16Mb for swap in ram
+ 	done
+ }
+ 
+@@ -49,4 +52,13 @@
+ done
+ [ "$VERBOSE" != no ] && echo
+ 
++echo "1" > /proc/sys/kernel/printk #for more log change level or remake line
++
++# Enable swap in ram
++if [ -e /dev/zram0 ]; then
++	[ "$VERBOSE" != no ] && echo "Enable swap in ram"
++	mkswap /dev/zram0
++	swapon -p 100 /dev/zram0
++fi
++
+ exit 0

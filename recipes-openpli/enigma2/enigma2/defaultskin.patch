@@ -1,0 +1,12 @@
+diff -Naur enigma2-PLi/skin.py enigma2-PersianPrince/skin.py
+--- enigma2-PLi/skin.py	2018-08-13 11:43:22.749948593 +0430
++++ enigma2-PersianPrince/skin.py	2018-08-13 11:44:18.520115166 +0430
+@@ -76,7 +76,7 @@
+ 
+ # example: loadSkin("nemesis_greenline/skin.xml")
+ config.skin = ConfigSubsection()
+-DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "PLi-FullNightHD/skin.xml" or "PLi-HD/skin.xml"
++DEFAULT_SKIN = "PLi-HD/skin.xml"
+ # on SD hardware, PLi-HD will not be available
+ if not fileExists(resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)):
+ 	# in that case, fallback to Magic (which is an SD skin)
