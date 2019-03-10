@@ -1,8 +1,8 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-#SRC_URI_append_sh4 += "\
-#	file://enigma2-serviceapp-0.1.patch \
-#	"
+SRC_URI_append_sh4 += "\
+	file://enigma2-serviceapp-0.1.patch \
+	"
 
 CXXFLAGS_append_sh4 += " -std=c++11 -fPIC -fno-strict-aliasing "
 
