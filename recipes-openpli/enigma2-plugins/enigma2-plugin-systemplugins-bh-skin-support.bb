@@ -9,7 +9,8 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://github.com/OpenVisionE2/enigma2-plugin-systemplugins-bh-skin-support.git"
+SRC_URI = "git://github.com/BlackHole/skins.git"
+#SRC_URI = "git://github.com/OpenVisionE2/enigma2-plugin-systemplugins-bh-skin-support.git"
 
 FILES_${PN} = "/usr/"
 
